@@ -58,10 +58,10 @@
         <legend>Error Calculator</legend>
         <input name="first-num" id="first-num" />
         <select name="operator" id="operator">
-          <option>+</option>
-          <option>-</option>
-          <option>*</option>
-          <option>/</option>
+          <option value='+'>+</option>
+          <option value='-'>-</option>
+          <option value='*'>*</option>
+          <option value='/'>/</option>
         </select>
         <input name="second-num" id="second-num" />
         <button id="calculate">Calculate</button>
@@ -71,21 +71,21 @@
     </form>
 
     <section id="error-btns">
-      <button id="clog">Console Log</button>
-      <button id="cerr">Console Error</button>
-      <button id="ccount">Console Count</button>
-      <button id="cwarn">Console Warn</button>
-      <button id="cassert">Console Assert</button>
-      <button id="cclear">Console Clear</button>
-      <button id="cdir">Console Dir</button>
-      <button id="cdirxml">Console dirxml</button>
-      <button id="cgroupstart">Console Group Start</button>
-      <button id="cgroupend">Console Group End</button>
-      <button id="ctable">Console Table</button>
-      <button id="starttimer">Start Timer</button>
-      <button id="endtimer">End Timer</button>
-      <button id="ctrace">Console Trace</button>
-      <button id="globalerr">Trigger a Global Error</button>
+      <button>Console Log</button>
+      <button>Console Error</button>
+      <button>Console Count</button>
+      <button>Console Warn</button>
+      <button>Console Assert</button>
+      <button>Console Clear</button>
+      <button>Console Dir</button>
+      <button>Console dirxml</button>
+      <button>Console Group Start</button>
+      <button>Console Group End</button>
+      <button>Console Table</button>
+      <button>Start Timer</button>
+      <button>End Timer</button>
+      <button>Console Trace</button>
+      <button>Trigger a Global Error</button>
     </section>
   </main>
 
@@ -104,6 +104,96 @@
 
     // Start your code here
     // You may move this JS to another file if you wish
+
+    //console log
+    errorBtns[0].addEventListener('click', function() {
+        console.log('Console Log Demo');
+    });
+
+    //console error
+    errorBtns[1].addEventListener('click', function() {
+        console.error('Console error output');
+    });
+
+    //console count
+    errorBtns[2].addEventListener('click', function() {
+        console.count('count');
+    });
+    
+    //console warn
+    errorBtns[3].addEventListener('click', function() {
+        console.warn('warn');
+    });
+
+    //console assert
+    errorBtns[4].addEventListener('click', function() {
+        
+    });
+
+    //console clear
+    errorBtns[5].addEventListener('click', function() {
+        console.clear();
+    });
+
+    //console dir
+    errorBtns[6].addEventListener('click', function() {
+        console.dir(document.getElementById('cdir'));
+    });
+
+    //console dirxml
+    errorBtns[7].addEventListener('click', function() {
+        console.dirxml(document);
+    });
+
+    //console group
+    errorBtns[8].addEventListener('click', function() {
+        console.group('group');
+    });
+
+    //console group end
+    errorBtns[9].addEventListener('click', function() {
+        console.groupEnd();
+    });
+
+    //console table
+    errorBtns[10].addEventListener('click', function() {
+        console.table([ 
+            {
+                first: 'John',
+                last: 'Doe',
+            },
+            {
+                first: 'Jane',
+                last: 'Mary',
+            },
+            {
+                first: 'Brandon',
+                last: 'Chen',
+            }
+        ])
+    });
+
+    //console timer
+    errorBtns[11].addEventListener('click', function() {
+        console.time('Timer');
+    });
+
+    //console timer end
+    errorBtns[12].addEventListener('click', function() {
+        console.timeEnd('Timer');
+    });
+
+    //console trace
+    errorBtns[13].addEventListener('click', function() {
+        console.trace();
+    });
+
+    //global error
+    errorBtns[14].addEventListener('click', function() {
+        
+    });
+
+
   </script>
 </body>
 
