@@ -7,8 +7,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Lab 9</title>
 
-  <script src="main.js"></script>
-
   <style>
     button {
       margin: 3px;
@@ -89,6 +87,14 @@
     </section>
   </main>
 
+  <script src="https://cdn.trackjs.com/agent/v3/latest/t.js"></script>
+  <script>
+    window.TrackJS && TrackJS.install({ 
+      token: "09bd3001a11245d8b8340bc69c5ef852"
+      // for more configuration options, see https://docs.trackjs.com
+    });
+  </script>
+
   <script>
     let form = document.querySelector('form');
     form.addEventListener('submit', e => {
@@ -96,8 +102,16 @@
       let output = document.querySelector('output');
       let firstNum = document.querySelector('#first-num').value;
       let secondNum = document.querySelector('#second-num').value;
+
+      if(!isNumber(secondNum))
+        throw new NaNError('second input is invalid');
+
       let operator = document.querySelector('#operator').value;
-      output.innerHTML = eval(`${firstNum} ${operator} ${secondNum}`);
+      try {
+        output.innerHTML = eval(`${firstNum} ${operator} ${secondNum}`);
+      } catch (e) {
+        output.innerHTML = 'input(s) invalid!';
+      }
     });
 
     let errorBtns = Array.from(document.querySelectorAll('#error-btns > button'));
@@ -127,7 +141,9 @@
 
     //console assert
     errorBtns[4].addEventListener('click', function() {
-        
+        let x = 5;
+        const reason = 'x is expected to be greater than 10';
+        console.assert(x > 10, {x, reason});
     });
 
     //console clear
@@ -190,10 +206,24 @@
 
     //global error
     errorBtns[14].addEventListener('click', function() {
-        
+        throw new Error('this is a global error!')
     });
 
+    // taken from https://stackoverflow.com/questions/9716468/pure-javascript-a-function-like-jquerys-isnumeric
+    function isNumber(n) {
+      return !isNaN(parseFloat(n)) && isFinite(n);
+    }
 
+    class NaNError extends Error {
+      constructor(message) {
+        super(message);
+        this.name = 'NaNError';
+      }
+    }
+
+    window.onerror = function (msg, url, lineNo, columnNo, error) {
+      console.log(msg);
+    }
   </script>
 </body>
 
